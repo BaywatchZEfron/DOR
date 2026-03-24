@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Notificaciones</title>
+  <script>
+    function mostrarMensaje() {
+      document.getElementById('mensaje').innerText = '¡Nueva notificación!';
+    }
+  </script>
+</head>
+<body>
+  <h1>Página de Notificaciones</h1>
+
+  <button type="button" onclick="mostrarMensaje()">Mostrar Notificación</button>
+
+  <!-- PROBLEMA: Igual que ejercicio 6 — el cambio dinámico es invisible
+                 para el lector de pantalla sin región "viva".
+       SOLUCIÓN: role="alert" + aria-live="assertive" para notificaciones
+                 urgentes que interrumpen al usuario inmediatamente.
+       DIFERENCIA con ejercicio 6: "polite" espera a que el lector
+       termine; "assertive" interrumpe. Usar assertive solo para
+       mensajes urgentes o de error. -->
+  <div id="mensaje" role="alert" aria-live="assertive" aria-atomic="true"></div>
+
+</body>
+</html>

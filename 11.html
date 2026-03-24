@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Zapatos Deportivos</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .precio { font-size: 20px; color: #c0392b; } /* rojo con contraste suficiente */
+    .boton {
+      background-color: #1a5276; /* azul oscuro con contraste suficiente sobre blanco */
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PROBLEMA: Todo son <div> sin semántica. Sin alt en imagen, sin <button>
+                 para la acción, sin estructura de landmark. WCAG 1.3.1, 4.1.2 -->
+
+  <!-- <main> identifica el contenido principal de la página -->
+  <main>
+    <h1>Zapatos Deportivos</h1>
+
+    <!-- <article> agrupa contenido autocontenido sobre el producto -->
+    <article aria-label="Ficha de producto">
+
+      <!-- alt descriptivo: WCAG 1.1.1 -->
+      <img src="zapatos.jpg" alt="Zapatos deportivos blancos con suela azul">
+
+      <p>Los mejores zapatos para correr.</p>
+
+      <!-- <p> con clase visual está bien; no necesita ARIA -->
+      <p class="precio">Precio: $50</p>
+
+      <!-- PROBLEMA: <div> con onclick no es accesible por teclado.
+           SOLUCIÓN: <button> nativo. WCAG 2.1.1, 4.1.2 -->
+      <button
+        type="button"
+        class="boton"
+        onclick="alert('Producto añadido al carrito')"
+      >
+        Añadir al carrito
+      </button>
+
+    </article>
+  </main>
+
+</body>
+</html>

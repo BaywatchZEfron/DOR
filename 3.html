@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Botón</title>
+</head>
+<body>
+  <h1>Interacción</h1>
+
+  <!-- PROBLEMA: <div> no tiene rol semántico, no es enfocable con teclado
+                 ni activable con Enter/Espacio.
+       SOLUCIÓN: <button> nativo — rol, foco y teclado incluidos. WCAG 4.1.2
+       NO se usa ARIA: sería un parche peor que usar el elemento correcto. -->
+  <button
+    type="button"
+    onclick="alert('¡Botón presionado!')"
+    style="border: 1px solid; padding: 10px; width: 100px; text-align: center; cursor: pointer;"
+  >
+    Presionar
+  </button>
+
+</body>
+</html>

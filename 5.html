@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Tabla</title>
+</head>
+<body>
+  <h1>Lista de Precios</h1>
+
+  <!-- PROBLEMA: Solo <td> en toda la tabla — sin encabezados, sin estructura,
+                 sin título. El lector de pantalla lee datos sin contexto.
+       SOLUCIÓN: <caption> titula la tabla. <thead>/<tbody> la estructuran.
+                 <th scope="col"> asocia cada columna con su encabezado. WCAG 1.3.1
+       NO se necesita ARIA: HTML nativo cubre todo. -->
+  <table>
+    <caption>Lista de precios de productos</caption>
+    <thead>
+      <tr>
+        <!-- scope="col" vincula el encabezado con toda su columna -->
+        <th scope="col">Producto</th>
+        <th scope="col">Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Producto 1</td>
+        <td>10 USD</td>
+      </tr>
+      <tr>
+        <td>Producto 2</td>
+        <td>20 USD</td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

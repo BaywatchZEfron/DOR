@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Notificaciones</title>
+  <script>
+    function mostrarNotificacion() {
+      document.getElementById('notificacion').innerText = 'Cambio guardado';
+    }
+  </script>
+</head>
+<body>
+
+  <!-- PROBLEMA: El <div> se actualiza dinámicamente pero el lector de pantalla
+                 no detecta el cambio porque no hay región "viva".
+       SOLUCIÓN: role="status" + aria-live="polite" anuncian el cambio
+                 al lector de pantalla sin interrumpir al usuario.
+                 aria-atomic="true" hace que lea el mensaje completo.
+       NO existe equivalente HTML nativo para regiones dinámicas → ARIA necesario. -->
+
+  <!-- type="button" evita envíos accidentales dentro de un form -->
+  <button type="button" onclick="mostrarNotificacion()">Guardar</button>
+
+  <!-- role="status" es equivalente semántico a aria-live="polite".
+       Se combinan para máxima compatibilidad entre lectores de pantalla. -->
+  <div id="notificacion" role="status" aria-live="polite" aria-atomic="true"></div>
+
+</body>
+</html>

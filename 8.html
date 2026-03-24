@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Menú</title>
+  <style>
+    .submenu {
+      display: none;
+    }
+    /* CAMBIO: el submenu ahora se controla con JS en lugar de :hover,
+       para que funcione también con teclado, no solo con ratón. */
+    .submenu.visible {
+      display: block;
+    }
+  </style>
+  <script>
+    function toggleMenu() {
+      const submenu = document.getElementById('submenu');
+      const boton = document.getElementById('boton-menu');
+      const abierto = submenu.classList.toggle('visible');
+      /* aria-expanded se actualiza para reflejar el estado actual */
+      boton.setAttribute('aria-expanded', abierto);
+    }
+  </script>
+</head>
+<body>
+  <h1>Menú</h1>
+
+  <!-- PROBLEMA: <div> con :hover no es accesible por teclado y no comunica
+                 si el menú está abierto o cerrado.
+       SOLUCIÓN: <button> con aria-expanded indica el estado al lector de pantalla.
+                 aria-controls vincula el botón con el elemento que controla.
+                 aria-haspopup="true" indica que abre un submenú. WCAG 4.1.2 -->
+  <nav aria-label="Menú principal">
+    <button
+      id="boton-menu"
+      type="button"
+      aria-expanded="false"
+      aria-controls="submenu"
+      aria-haspopup="true"
+      onclick="toggleMenu()"
+    >
+      Opciones
+    </button>
+
+    <!-- <ul> estructura los ítems como lista navegable -->
+    <ul id="submenu" class="submenu">
+      <li><a href="#">Opción 1</a></li>
+      <li><a href="#">Opción 2</a></li>
+    </ul>
+  </nav>
+
+</body>
+</html>

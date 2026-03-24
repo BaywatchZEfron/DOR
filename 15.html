@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Menú Interactivo</title>
+  <style>
+    .submenu {
+      display: none;
+    }
+    /* El estado visible se controla con JS, no con :hover,
+       para que funcione también con teclado. */
+    .submenu.visible {
+      display: block;
+    }
+  </style>
+  <script>
+    function toggleMenu() {
+      const submenu = document.getElementById('submenu');
+      const boton = document.getElementById('boton-menu');
+      const abierto = submenu.classList.toggle('visible');
+      boton.setAttribute('aria-expanded', abierto);
+    }
+  </script>
+</head>
+<body>
+  <h1>Menú de Opciones</h1>
+
+  <!-- PROBLEMA: <div>+<p> sin semántica. Solo funciona con ratón (:hover).
+                 No comunica si el menú está abierto o cerrado. WCAG 2.1.1, 4.1.2
+       SOLUCIÓN: <button> con aria-expanded indica el estado.
+                 aria-controls vincula el botón con el submenú.
+                 <ul>+<li>+<a> estructuran las opciones como lista navegable.
+       DIFERENCIA con ejercicio 8: aquí hay 3 opciones y se añade <nav>
+       porque las opciones son enlaces de navegación, no solo acciones. -->
+  <nav aria-label="Menú de opciones">
+    <button
+      id="boton-menu"
+      type="button"
+      aria-expanded="false"
+      aria-controls="submenu"
+      aria-haspopup="true"
+      onclick="toggleMenu()"
+    >
+      Opciones
+    </button>
+
+    <ul id="submenu" class="submenu">
+      <li><a href="#">Opción 1</a></li>
+      <li><a href="#">Opción 2</a></li>
+      <li><a href="#">Opción 3</a></li>
+    </ul>
+  </nav>
+
+</body>
+</html>
